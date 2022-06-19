@@ -20,6 +20,7 @@ class Observer:
         self.average_age = 0
         self.current_population = current_population
         self.max_population = current_population
+        self.count_ppl = 4
         self.plantList = []
         self.populationList = []
         self.average_ageList = []
@@ -30,6 +31,7 @@ class Observer:
 
     def birth(self):
         self.current_population += 1
+        self.count_ppl += 1
         if self.max_population < self.current_population:
             self.max_population = self.current_population
 
@@ -186,8 +188,8 @@ class Person:
                             female.pregnant = 1
                             self.hunger -= 1
                             self.points += 10
-                            obj_positions.append(Person(4, self.x+1, self.y))
                             observer.birth()
+                            obj_positions.append(Person(observer.count_ppl, self.x+1, self.y))
                             break
                         else:
                             self.find_food()
